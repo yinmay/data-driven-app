@@ -6,3 +6,5 @@ a app create with react native
 * make the link to DealDetail
 * fetch the other data 
 * make a `onBack` link to the homepage
+* use `lodash.debounce` to make the search bar
+ 

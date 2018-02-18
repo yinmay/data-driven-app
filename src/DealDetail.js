@@ -31,35 +31,39 @@ export default class DealDetail extends Component {
       return (
         <View style={styles.deal} onPress={this.handlePress}>
           <TouchableOpacity onPress={this.props.onBack}>
-            <Text>back</Text>
+            <Text style={styles.backLink}>back</Text>
           </TouchableOpacity>
-          <Image source={{uri:deal.media[0]}}
-            style={styles.image}
-          />
-          <Text style={styles.title}> {deal.title} </Text>
-          <View style={styles.info}>
+
+          <View style={styles.detail}>
+            <Image source={{uri:deal.media[0]}}
+              style={styles.image}
+            />
+            <Text style={styles.title}> {deal.title} </Text>
+            <View style={styles.info}>
             
-            <View style={styles.footer}>
-              <Text style={styles.price}> {this._price(deal.price)} </Text>
-              <Text style={styles.cause}> {deal.cause.name} </Text>
+              <View style={styles.footer}>
+                <Text style={styles.price}> {this._price(deal.price)} </Text>
+                <Text style={styles.cause}> {deal.cause.name} </Text>
               
              
-            </View>
-            {deal.user && ( <View style={styles.user}>
-              <Image source={{uri:deal.user.avatar}} style={styles.avatar} />
-              <Text>
-                {deal.user.name}
-              </Text>
+              </View>
+              {deal.user && ( <View style={styles.user}>
+                <Image source={{uri:deal.user.avatar}} style={styles.avatar} />
+                <Text>
+                  {deal.user.name}
+                </Text>
 
-            </View>)}
+              </View>)}
+            </View>
+          
+            <View style={styles.description}>
+              <Text>
+                {deal.description}
+              </Text>
+            
+            </View>
           </View>
           
-          <View style={styles.description}>
-            <Text>
-              {deal.description}
-            </Text>
-            
-          </View>
         </View>
 
       );
@@ -69,6 +73,13 @@ const styles=StyleSheet.create({
   deal:{
     marginHorizontal: 12,
     marginTop:50,
+
+  },
+  backLink:{
+    marginBottom:5,
+    color:'#22f'
+  },
+  detail:{
     borderColor:'#bbb',
     borderWidth: 1,
   },
