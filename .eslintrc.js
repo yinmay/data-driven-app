@@ -25,5 +25,6 @@ module.exports = {
       'no-console': ['warn', { allow: ['info', 'error'] }],
       'arrow-parens': ['error', 'always'],
       'no-unused-vars':['off'],
+      'prefer-const':'error'
     },
   };

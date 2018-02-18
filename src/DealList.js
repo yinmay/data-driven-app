@@ -5,8 +5,9 @@ import DealItem from './DealItem';
 
 
 class DealList extends Component {
-  static PropTypes={
-    deals:PropTypes.array.isRequired
+  static propTypes={
+    deals:PropTypes.array.isRequired,
+    onItemPress:PropTypes.func.isRequired,
   }
   render() {
     return (
@@ -14,7 +15,9 @@ class DealList extends Component {
 
         <FlatList
           data={this.props.deals}
-          renderItem={({item}) => <DealItem deal={item}/>}
+          renderItem={({item}) => 
+            <DealItem deal={item} 
+              onPress={this.props.onItemPress}/>}
         />
       </View>
     );

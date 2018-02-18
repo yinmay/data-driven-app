@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
-import {  View, Text, Image, StyleSheet } from 'react-native';
+import {  View, Text, Image, StyleSheet,TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
 export default class DealItem extends Component {
     static propTypes={
       deal: PropTypes.object.isRequired,
+      onPress:PropTypes.func.isRequired,
     }
 
     _price(price){
       return `$${price/100}`;
     }
+    handlePress=()=>{
+      this.props.onPress(this.props.deal.key);
+    }
     render() {
       const {deal} = this.props;
       return (
-        <View style={styles.deal}>
+        <TouchableOpacity style={styles.deal} onPress={this.handlePress}>
           
           <Image source={{uri:deal.media[0]}}
             style={styles.image}
@@ -21,11 +25,12 @@ export default class DealItem extends Component {
           <View style={styles.info}>
             <Text style={styles.title}> {deal.title} </Text>
             <View style={styles.footer}>
-              <Text style={styles.price}> {this._price(deal.price)} </Text>
               <Text style={styles.cause}> {deal.cause.name} </Text>
+              <Text style={styles.price}> {this._price(deal.price)} </Text>
+             
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
 
       );
     }
@@ -57,7 +62,7 @@ const styles=StyleSheet.create({
       
   },
   cause:{
-    flex:2
+    flex:2,
   },
   price:{
     flex:1,
