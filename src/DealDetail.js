@@ -5,7 +5,8 @@ import ajax from './ajax';
 
 export default class DealDetail extends Component {
     static propTypes={
-      initialDealData: PropTypes.object.isRequire
+      initialDealData: PropTypes.object.isRequire,
+      onBack:PropTypes.func.isRequire
     }
 
     state={
@@ -29,7 +30,9 @@ export default class DealDetail extends Component {
       const {deal} = this.state;
       return (
         <View style={styles.deal} onPress={this.handlePress}>
-          
+          <TouchableOpacity onPress={this.props.onBack}>
+            <Text>back</Text>
+          </TouchableOpacity>
           <Image source={{uri:deal.media[0]}}
             style={styles.image}
           />
